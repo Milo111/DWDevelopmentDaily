@@ -1,0 +1,9 @@
+# 12-8
+今天优化了一下手头项目的下载功能，使其支持多任务同时下载并再通知栏显示。支持断点续传和判断服务器
+是否支持断点续传。
+
+判断服务器是否支持断点续传：通过请求时Header添加Accept-Range:bytes=XX-XX,判断服务器
+Response的Headers中是否含有Content-Range来判断
+
+遇到的坑:断点续传中,服务器返回的response中的Content-Length为本次下载的内容长度,非文件
+的内容长度
